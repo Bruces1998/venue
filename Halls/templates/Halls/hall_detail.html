@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="container">
+  <h1>{{ hall.name }}</h1>
+  <h2>HALL CAPACITY:{{ hall.hall_type}}</h2>
+
+  <h2>Facilities Available:{{ hall.particulars }}</h2>
+  {% if hall.vacant %}
+  <h3>Available for Booking</h3>
+  {% endif %}
+
+  <div class="row">
+  <div class="col-md-4">
+    <div class="thumbnail">
+
+        <img src="{{ hall.image.url }}" alt="Lights" style="width:100%">
+        <div class="caption">
+          <p>Lorem ipsum...</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+  {% if user.is_authenticated %}
+  <a class='btn btn-primary' href="{% url 'halls:booking' pk=hall.pk%}"><span class='glyphicon glyphicon-pencil'>Book Now</span></a>
+  {% endif %}
+
+  <h2>Status:</h2>
+
+  {% for bookings in hall.bookings.all%}
+
+
+
+  {% if bookings.approved_bookings%}
+  <p>Hall Booked by {{bookings.requested_by}} on {{bookings.booking_required}} {{bookings.slot}}</p>
+
+  {% endif %}
+  {% endfor %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

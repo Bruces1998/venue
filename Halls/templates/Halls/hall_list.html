@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body_block %}
+
+  <h2>Venues Available Are:</h2>
+
+  {% for hall in hall_list %}
+
+
+  <h2><a href="{% url 'halls:hall_detail' pk=hall.pk %}">{{hall.name}}</a></h2>
+  <div class="row">
+  <div class="col-md-4">
+    <div class="thumbnail">
+
+        <img src="{{ hall.image.url }}" alt="Lights" style="width:100%">
+        <div class="caption">
+          <p>Lorem ipsum...</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- <h1>Allocated: {{hall.approve_bookings.count}}</h1> -->
+
+  <p></p>
+
+
+
+{% endfor %}
+{% endblock %}
